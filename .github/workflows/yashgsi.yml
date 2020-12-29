@@ -4,7 +4,7 @@ on: [push]
 
 env:
   ROM_URL: https://tdrive.elytra8.workers.dev/OnePlus7TProOxygen_14.I.15_OTA_015_all_2002022100_f057c4d76e.zip
-  ROM_NAME: OxygenOS
+  ROM_NAME: OPMinimal
   ZIP_NAME: OxygenOS_OP7TPro
   TZ: Asia/Kolkata
 jobs:
@@ -41,13 +41,17 @@ jobs:
        
        - name: Download Stock Rom & Generate GSI
          run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
+
+       - name: Print build info
+         run: |
+              cat ErfanGSIs/output/*-Aonly-*.txt
        
        - name: Zip Aonly and upload 
          run: |
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
               cd ErfanGSIs/output
-              7z a $ZIP_NAME-GSI-Aonly.7z *-Aonly-*.img
+              7z a $ZIP_NAME-YashGSI-Aonly.7z *-Aonly-*.img
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"yes/no\"
@@ -57,7 +61,7 @@ jobs:
               expect \"sftp> \"
               send \"cd ${{ secrets.SFDIR }}\r\"
               set timeout -1
-              send \"put $ZIP_NAME-GSI-Aonly.7z\r\"
+              send \"put $ZIP_NAME-YashGSI-Aonly.7z\r\"
               expect \"Uploading\"
               expect \"100%\"
               expect \"sftp>\"
@@ -66,7 +70,7 @@ jobs:
        - name: Zip AB and upload 
          run: |
               cd ErfanGSIs/output
-              7z a $ZIP_NAME-GSI-AB.7z *-AB-*.img
+              7z a $ZIP_NAME-YashGSI-AB.7z *-AB-*.img
               expect -c " 
               spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
               expect \"Password\"        
@@ -74,14 +78,11 @@ jobs:
               expect \"sftp> \"
               send \"cd ${{ secrets.SFDIR }}\r\"
               set timeout -1
-              send \"put $ZIP_NAME-GSI-AB.7z\r\"
+              send \"put $ZIP_NAME-YashGSI-AB.7z\r\"
               expect \"Uploading\"
               expect \"100%\"
               expect \"sftp>\"
               send \"bye\r\"
               interact"
-       - name: Print build info
-         run: |
-              cat ErfanGSIs/output/*-Aonly-*.txt
          
             
