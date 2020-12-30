@@ -3,9 +3,9 @@ name: Building GSI..
 on: [push]
 
 env:
-  ROM_URL: https://tdrive.elytra8.workers.dev/OnePlus7TProOxygen_14.I.15_OTA_015_all_2002022100_f057c4d76e.zip
-  ROM_NAME: OPMinimal
-  ZIP_NAME: OxygenOS_OP7TPro
+  ROM_URL: http://otafsg-cost-az.coloros.com/Nord_EEA/NordOxygen_14.E.12_GLO_012_2012212225/patch/amazone2/GLO/NordOxygen/NordOxygen_14.E.12_GLO_012_2012212225/NordOxygen_14.E.12_OTA_012_all_2012212225_23f0af92fc0.zip
+  ROM_NAME: OxygenOS
+  ZIP_NAME: OxygenOS_OPnord
   TZ: Asia/Kolkata
 jobs:
   build:
