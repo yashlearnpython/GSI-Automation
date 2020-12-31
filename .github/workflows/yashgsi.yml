@@ -3,9 +3,9 @@ name: Building GSI..
 on: [push]
 
 env:
-  ROM_URL: http://otafsg-cost-az.coloros.com/Nord_EEA/NordOxygen_14.E.12_GLO_012_2012212225/patch/amazone2/GLO/NordOxygen/NordOxygen_14.E.12_GLO_012_2012212225/NordOxygen_14.E.12_OTA_012_all_2012212225_23f0af92fc0.zip
-  ROM_NAME: OxygenOS
-  ZIP_NAME: OxygenOS_OPnord
+  ROM_URL: https://bigota.d.miui.com/V12.0.4.0.QFKINXM/miui_RAPHAELININGlobal_V12.0.4.0.QFKINXM_86ee266dd1_10.0.zip
+  ROM_NAME: MIUI
+  ZIP_NAME: MIUI_raphek
   TZ: Asia/Kolkata
 jobs:
   build:
